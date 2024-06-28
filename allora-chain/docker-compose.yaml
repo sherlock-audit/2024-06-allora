@@ -1,0 +1,17 @@
+# Change all occurrences of "sample_validator" to your prerferred name
+services:
+  sample_validator:
+    container_name: sample_validator
+    # build: .
+    image: "alloranetwork/allora-chain:v0.2.7"
+    environment:
+      - NETWORK=edgenet
+      - MONIKER=sample_validator
+      - APP_HOME=./data
+    volumes:
+      - ./data:/data
+      - ./scripts/:/scripts
+    ports:
+      - "26656-26657:26656-26657"
+    user: "0:0"
+    entrypoint: /scripts/l1_node.sh
